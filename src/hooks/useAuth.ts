@@ -14,6 +14,7 @@ export const useAuth = () => {
       addUser(JSON.parse(user));
     }
     setLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = (user: User) => {

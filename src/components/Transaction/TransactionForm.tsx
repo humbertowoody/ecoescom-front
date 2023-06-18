@@ -51,6 +51,7 @@ const TransactionForm: FC = () => {
           console.log(err);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Formik es una librería que nos permite manejar formularios de una manera más sencilla.

@@ -32,6 +32,7 @@ const PromotionPublicGrid: FC = () => {
         setPaginatedPromotions(paginatedPromotion);
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSearch = (search: string) => {
