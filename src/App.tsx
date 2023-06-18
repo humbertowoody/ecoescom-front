@@ -1,25 +1,134 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Container,
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+} from "@mui/material";
+import React, { Fragment } from "react";
+import { Route, RouteProps, Routes, Navigate } from "react-router-dom";
+import Credits from "./components/Credit";
+import CreditForm from "./components/Credit/CreditForm";
+import Footer from "./components/Footer";
+import ForgotPasswordSide from "./components/ForgotPassword";
+import Header from "./components/Header";
+import Loading from "./components/Loading";
+import SignInSide from "./components/Login";
+import Profile from "./components/Profile";
+import Promotions from "./components/Promotion";
+import PromotionForm from "./components/Promotion/PromotionForm";
+import SignUpSide from "./components/SignUp";
+import Timeline from "./components/Timeline";
+import Transactions from "./components/Transaction";
+import TransactionForm from "./components/Transaction/TransactionForm";
+import { AuthProvider } from "./context/AuthContext";
+import { useAuth } from "./hooks/useAuth";
+
+function Protected({ children }: any) {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (!user) {
+    return <Navigate to="/iniciar-sesion" replace />;
+  }
+
+  return children as JSX.Element;
+}
 
 function App() {
+  const theme = createTheme();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <CssBaseline />
+      <Header />
+      <Container>
+        <Routes>
+          <Route path="/" element={<Timeline />} />
+          <Route path="/faq" element={<Navigate to="/" />} />
+
+          <Route path="/iniciar-sesion" element={<SignInSide />} />
+          <Route path="/registro" element={<SignUpSide />} />
+          <Route
+            path="/recuperar-contrasena"
+            element={<ForgotPasswordSide />}
+          />
+
+          <Route
+            path="/perfil"
+            element={
+              <Protected>
+                <Profile />
+              </Protected>
+            }
+          />
+          <Route path="/perfil/editar" element={<Navigate to="/" />} />
+          <Route
+            path="/perfil/editar-contrasena"
+            element={<Navigate to="/" />}
+          />
+
+          <Route
+            path="/creditos"
+            element={
+              <Protected>
+                <Credits />
+              </Protected>
+            }
+          />
+          <Route
+            path="/creditos/crear"
+            element={
+              <Protected>
+                <CreditForm />
+              </Protected>
+            }
+          />
+          <Route path="/creditos/:id" element={<Credits />} />
+
+          <Route
+            path="/promociones"
+            element={
+              <Protected>
+                <Promotions />
+              </Protected>
+            }
+          />
+          <Route
+            path="/promociones/crear"
+            element={
+              <Protected>
+                <PromotionForm />
+              </Protected>
+            }
+          />
+          <Route path="/promociones/editar/:id" element={<PromotionForm />} />
+          <Route path="/promociones/:id" element={<Promotions />} />
+
+          <Route
+            path="/transacciones"
+            element={
+              <Protected>
+                <Transactions />
+              </Protected>
+            }
+          />
+          <Route
+            path="/transacciones/crear"
+            element={
+              <Protected>
+                <TransactionForm />
+              </Protected>
+            }
+          />
+          <Route path="/transacciones/:id" element={<Transactions />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Container>
+      <Footer />
+    </AuthProvider>
   );
 }
 
