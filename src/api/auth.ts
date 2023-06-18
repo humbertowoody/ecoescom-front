@@ -2,10 +2,11 @@
 import axios from "axios";
 import User from "../models/User/User";
 import SignUp from "../models/auth/Signup";
+import { BASE_URL } from "../constants";
 
 // Create axios instance with auth logic handled
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: BASE_URL,
   timeout: 5000,
   headers: {
     Authorization: localStorage.getItem("user")
