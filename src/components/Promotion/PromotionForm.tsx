@@ -17,8 +17,7 @@ import { useAuth } from "../../hooks/useAuth";
 import CreatePromotionDTO from "../../models/Promotion/CreatePromotionDTO";
 import EquivalenceData from "../Equivalence/EquivalenceData";
 import PromotionAPI from "../../api/promotions";
-import Promotion from "../../models/Promotion/Promotion";
-import { Add, Undo } from "@mui/icons-material";
+import { Undo } from "@mui/icons-material";
 
 // Esquema de validación para una promoción.
 const validationSchema = yup.object({

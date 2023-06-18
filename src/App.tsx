@@ -1,11 +1,6 @@
-import {
-  Container,
-  createTheme,
-  CssBaseline,
-  ThemeProvider,
-} from "@mui/material";
-import React, { Fragment } from "react";
-import { Route, RouteProps, Routes, Navigate } from "react-router-dom";
+import { Container, CssBaseline } from "@mui/material";
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Credits from "./components/Credit";
 import CreditForm from "./components/Credit/CreditForm";
 import Footer from "./components/Footer";
@@ -38,7 +33,6 @@ function Protected({ children }: any) {
 }
 
 function App() {
-  const theme = createTheme();
   return (
     <AuthProvider>
       <CssBaseline />

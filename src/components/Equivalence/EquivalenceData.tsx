@@ -7,8 +7,6 @@ import {
   TableBody,
   Stack,
   Pagination,
-  useMediaQuery,
-  Theme,
   Box,
 } from "@mui/material";
 import React, { FC, Fragment, useEffect, useState } from "react";

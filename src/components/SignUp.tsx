@@ -6,7 +6,6 @@ import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
@@ -14,7 +13,7 @@ import { Navigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { AuthAPI } from "../api/auth";
-import { PersonAdd, PersonOff, PersonPin } from "@mui/icons-material";
+import { PersonAdd } from "@mui/icons-material";
 
 // Esquema de validación para cada Artículo en el formulario.
 const validationSchema = yup.object({

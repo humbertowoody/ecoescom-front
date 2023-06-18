@@ -18,7 +18,6 @@ import Promotion from "../../models/Promotion/Promotion";
 import { Undo } from "@mui/icons-material";
 import PromotionAPI, { PaginatedPromotions } from "../../api/promotions";
 import TransactionAPI from "../../api/transactions";
-import { AxiosError } from "axios";
 
 // Esquema de validación para una Transacción.
 const validationSchema = yup.object({
