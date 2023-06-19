@@ -43,12 +43,18 @@ const CreditPublicGrid: FC = () => {
     );
   };
 
-  const handleReport = (creditId: string) => {
+  const handleReport = async (creditId: string) => {
     const userConfirmation: boolean = window.confirm(`
       ¿Estás seguro de que deseas reportar este crédito?
-`);
+    `);
     if (userConfirmation) {
-      alert(`El crédito ${creditId} ha sido reportado`);
+      try {
+        const respuesta = await CreditAPI.reportCredit(creditId);
+        console.log(respuesta);
+        alert(`El crédito ${creditId} ha sido reportado`);
+      } catch (error) {
+        alert(`El crédito ${creditId} no ha podido ser reportado`);
+      }
     }
   };
 

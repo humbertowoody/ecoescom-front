@@ -60,4 +60,9 @@ export class CreditAPI {
     });
     return response.data;
   }
+
+  public static async reportCredit(creditId: string) {
+    const response = await axiosInstance.post(`/credits/${creditId}/report`);
+    return response.data;
+  }
 }
