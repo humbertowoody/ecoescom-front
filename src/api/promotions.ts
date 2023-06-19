@@ -1,6 +1,7 @@
 import { RequestQueryBuilder } from "@nestjsx/crud-request";
 import CreatePromotionDTO from "../models/Promotion/CreatePromotionDTO";
 import Promotion from "../models/Promotion/Promotion";
+import UpdatePromotionDTO from "../models/Promotion/UpdatePromotionDTO";
 import User from "../models/User/User";
 import axiosInstance from "./auth";
 
@@ -16,6 +17,15 @@ export default class PromotionAPI {
   public static async createPromotion(dto: CreatePromotionDTO) {
     const response = await axiosInstance.post<CreatePromotionDTO>(
       "/promotions",
+      dto
+    );
+
+    return response.data;
+  }
+
+  public static async updatePromotion(id: string, dto: UpdatePromotionDTO) {
+    const response = await axiosInstance.patch<UpdatePromotionDTO>(
+      `/promotions/${id}`,
       dto
     );
 

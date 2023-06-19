@@ -1,9 +1,9 @@
 interface UpdatePromotionDTO {
-  id: string;
-  name: string;
-  description: string;
-  photo_url: string;
-  price: number;
+  name?: string;
+  description?: string;
+  photo_url?: string;
+  price?: number;
+  enabled?: boolean;
 }
 
 export default UpdatePromotionDTO;

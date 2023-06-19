@@ -42,26 +42,18 @@ const Promotions: FC = () => {
           <Typography variant="h3" color="text.primary" gutterBottom>
             Mis promociones
           </Typography>
-          {user && user.role === "SELLER" ? (
-            <Fragment>
-              <Typography variant="body1" color="text.secondary" paragraph>
-                Aquí puedes visualizar todas tus promociones registradas en
-                EcoESCOM.
-              </Typography>
-              <Button
-                startIcon={<Add />}
-                variant="contained"
-                href="/promociones/crear"
-              >
-                Crear una promoción nueva
-              </Button>
-            </Fragment>
-          ) : (
-            <Typography variant="body1" color="text.secondary" paragraph>
-              Aquí podrás visualizar las promociones disponibles, haz click en
-              "Ver más" para conocer los detalles de cada una.
-            </Typography>
-          )}
+          <Typography variant="body1" color="text.secondary" paragraph>
+            Aquí puedes visualizar todas tus promociones registradas en
+            EcoESCOM. Debido a cómo funciona el sistema, no puedes editarlas,
+            pero puedes activarlas o desactivarlas para su uso.
+          </Typography>
+          <Button
+            startIcon={<Add />}
+            variant="contained"
+            href="/promociones/crear"
+          >
+            Crear una promoción nueva
+          </Button>
         </Container>
       </Box>
       <Container sx={{ py: 8 }} maxWidth="md">

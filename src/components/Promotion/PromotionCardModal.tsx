@@ -7,10 +7,12 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Switch,
   Typography,
 } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import Promotion from "../../models/Promotion/Promotion";
+import PromotionAPI from "../../api/promotions";
 
 const style = {
   position: "absolute" as "absolute",
@@ -33,6 +35,27 @@ export default function PromotionCardModal({
 
   const openModal = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
+
+  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const enabled = event.target.checked;
+    const userConfirmation = window.confirm(
+      `¿Estás seguro de ${
+        enabled ? "habilitar" : "deshabilitar"
+      } la promoción ${promotion.name}?`
+    );
+
+    if (userConfirmation) {
+      await PromotionAPI.updatePromotion(promotion.id, {
+        enabled,
+      });
+
+      alert(
+        `La promoción ${promotion.name} ha sido ${
+          enabled ? "habilitada" : "deshabilitada"
+        }`
+      );
+    }
+  };
 
   return (
     <Fragment>
@@ -61,6 +84,7 @@ export default function PromotionCardModal({
           <Button fullWidth size="small" onClick={openModal}>
             Ver más
           </Button>
+          <Switch defaultChecked={promotion.enabled} onChange={handleChange} />
         </CardActions>
       </Card>
       <Modal
