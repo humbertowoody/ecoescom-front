@@ -168,7 +168,7 @@ const Profile: FC = () => {
         <Typography variant="body2" gutterBottom>
           Si deseas solicitar que tu cuenta sea de vendedor, porfavor envia un
           correo a: <br />
-          <a href="mailto:contacto@ecoescom.lat">contacto@ecoescom.lat</a>
+          <a href="mailto:contacto@ecoescom.bio">contacto@ecoescom.bio</a>
         </Typography>
       </Box>
     </Container>
