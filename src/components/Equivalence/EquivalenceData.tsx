@@ -14,7 +14,7 @@ import { EquivalenceAPI, PaginatedEquivalences } from "../../api/equivalences";
 import Equivalence from "../../models/Equivalence/Equivalence";
 
 const EquivalenceData: FC = () => {
-  const isSmall = true; //useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+  const isSmall = window.innerWidth < 600;
 
   const [paginatedEquivalences, setPaginatedEquivalences] = useState({
     data: [],
