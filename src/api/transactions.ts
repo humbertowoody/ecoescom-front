@@ -21,14 +21,6 @@ export default class TransactionAPI {
     const queryString: string = RequestQueryBuilder.create({
       limit,
       page,
-      join: [
-        {
-          field: "user",
-        },
-        {
-          field: "promotion",
-        },
-      ],
       sort: [
         {
           field: "created_at",
@@ -42,7 +34,7 @@ export default class TransactionAPI {
           value: user.id,
         },
         {
-          field: "promotion.user",
+          field: "seller.id",
           operator: "$eq",
           value: user.id,
         },
