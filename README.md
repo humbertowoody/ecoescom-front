@@ -1,3 +1,21 @@
+# EcoESCOM - Frontend
+
+EcoESCOM es una plataforma de recompensas por realizar actividades de reciclaje en
+dónde los alumnos reciben créditos que podrán canjear por promociones y descuentos
+por parte del alumnado que ofrece algún producto o servicio.
+
+Este repositorio tiene todo el código de frontend necesario para la aplicación
+principal. El proyecto está hecho en React utilizando Material UI como sistema
+de diseño. Se usó Formik y Yup para los formularios, Axios para los requests
+y se conecta con [EcoESCOM - API](https://github.com/humbertowoody/ecoescom-back)
+mediante una autenticación simple con JWTs para enviar y recibir información.
+
+Humberto Alcocer.
+
+---
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
