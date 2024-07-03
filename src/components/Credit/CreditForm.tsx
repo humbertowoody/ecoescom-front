@@ -44,7 +44,7 @@ const CreditForm: FC = () => {
       .string()
       .oneOf(
         equivalences.map((equivalencia: Equivalence) => equivalencia.id),
-        "Debes seleccionar una equivalencia válida"
+        "Debes seleccionar una equivalencia válida",
       )
       .required("La equivalencia es requerida"),
     quantity: yup
@@ -75,7 +75,7 @@ const CreditForm: FC = () => {
     setImagePreview(URL.createObjectURL(event.target.files[0]) as any);
     formik.setFieldValue(
       "photo_url",
-      await convertirABase64(event.target.files[0])
+      await convertirABase64(event.target.files[0]),
     );
   };
 
@@ -96,11 +96,11 @@ const CreditForm: FC = () => {
         {
           ...values,
         },
-        user || undefined
+        user || undefined,
       )
         .then((response: Credit) => {
           alert(
-            `¡Gracias por tu ayuda! Tus créditos han sido registrados con el ID ${response.id}.`
+            `¡Gracias por tu ayuda! Tus créditos han sido registrados con el ID ${response.id}.`,
           );
           // Redirect to /creditos usando react-router-dom
           navigate("/creditos");
@@ -108,7 +108,7 @@ const CreditForm: FC = () => {
         .catch((error) => {
           console.error(error);
           alert(
-            "Ocurrió un error al registrar tus créditos. Por favor intenta de nuevo."
+            "Ocurrió un error al registrar tus créditos. Por favor intenta de nuevo.",
           );
         });
       setSubmitting(false);
@@ -154,7 +154,6 @@ const CreditForm: FC = () => {
                 formik.touched.equivalence_id &&
                 Boolean(formik.errors.equivalence_id)
               }
-              //helperText={formik.touched.action && formik.errors.action}
               sx={{ mb: 4 }}
             >
               <MenuItem key={""} value={""} disabled>
@@ -178,7 +177,7 @@ const CreditForm: FC = () => {
             {formik.values.equivalence_id
               ? equivalences.find(
                   (equivalencia: Equivalence) =>
-                    equivalencia.id === formik.values.equivalence_id
+                    equivalencia.id === formik.values.equivalence_id,
                 )?.unit + "s."
               : "😮"}
           </Typography>
@@ -213,7 +212,7 @@ const CreditForm: FC = () => {
             {formik.values.equivalence_id
               ? equivalences.find(
                   (equivalencia: Equivalence) =>
-                    equivalencia.id === formik.values.equivalence_id
+                    equivalencia.id === formik.values.equivalence_id,
                 )?.unit
               : "😮"}
             {formik.values.quantity > 1 || formik.values.quantity === 0
